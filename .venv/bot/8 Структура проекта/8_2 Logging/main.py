@@ -1,7 +1,11 @@
-import logging
+import logging.config
 
+import yaml
 from module_1 import main
 
-logging.basicConfig(format='#(levelname)-8s %(name)s:%(funcName)s - %(message)s')
+with open('logging_config.yaml', 'rt') as f:
+    config = yaml.safe_load(f.read())
+
+logging.config.dictConfig(config)
 
 main()
